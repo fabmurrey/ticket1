@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the e-Micro-Blog!"
+      flash[:success] = "Welcome to the jobs_ticketing!"
       redirect_to @user
     else
       render 'new'
@@ -26,8 +26,11 @@ class UsersController < ApplicationController
   def edit
     end
 
+  def avatar
+  end
+
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], :per_page => 3)
   end
 
   def update

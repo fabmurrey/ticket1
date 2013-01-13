@@ -1,5 +1,11 @@
 SocialMicroblogging::Application.routes.draw do
   
+  resources :payments
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :users do
     member do
       get :following, :followers
@@ -22,7 +28,7 @@ SocialMicroblogging::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
 
   match '/contact', to: 'static_pages#contact'
-
+  get "paypal_express/checkout"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

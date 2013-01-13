@@ -1,0 +1,9 @@
+class RemoveStaffIdFromTasks < ActiveRecord::Migration
+  def up
+remove_column :tasks, :staff_id
+  end
+
+  def down
+add_column :tasks, :staff, :integer
+  end
+end

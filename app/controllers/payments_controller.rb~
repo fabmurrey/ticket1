@@ -1,0 +1,4 @@
+class PaymentsController < InheritedResources::Base
+ def index
+  end
+end

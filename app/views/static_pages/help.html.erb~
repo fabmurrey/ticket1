@@ -1,0 +1,13 @@
+<div><%= link_to image_tag("fiber.jpg", alt: "fiber") %></div>
+
+
+<% provide(:title, 'Help') %>
+<h1>Help</h1>
+<p>
+  contact us on any issue with this website application
+
+
+  ?contact our developer edumurrey@gmail.com for any suggestions on the site's aesthetics
+</p>
+
+

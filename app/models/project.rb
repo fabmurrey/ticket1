@@ -1,0 +1,5 @@
+class Project < ActiveRecord::Base
+ has_many :tasks
+ validates :title, :presence => true
+  attr_accessible :title
+end

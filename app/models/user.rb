@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :location, :phone_no, :password, :password_confirmation, :avatar
   has_secure_password
+  has_many :payments
   has_many :microposts, dependent: :destroy
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
-
+scope :id, where(:id =>"all")
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
                                    dependent:   :destroy
@@ -18,8 +20,11 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates :location, presence: true
+  validates :phone_no, presence: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  validates_with AttachmentPresenceValidator, :attributes => :avatar
 
 def feed
   Micropost.from_users_followed_by(self)
@@ -43,3 +48,4 @@ private
       self.remember_token = SecureRandom.urlsafe_base64
     end  
 end
+

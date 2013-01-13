@@ -1,0 +1,8 @@
+class PaypalExpressController < ApplicationController
+before_filter :assigns_gateway
+
+  include ActiveMerchant::Billing
+  include PaypalExpressHelper
+
+  
+end

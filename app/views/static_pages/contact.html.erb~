@@ -1,0 +1,7 @@
+<div><%= link_to image_tag(""fiber.jpg", alt: "fiber") %></div>
+
+<% provide(:title, 'Contact') %>
+<h1>Contact</h1>
+<p>
+  Contat edumurrey on jb ticketing system
+</p>

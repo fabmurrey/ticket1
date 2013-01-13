@@ -1,0 +1,7 @@
+class AddUserIdIdToPayments < ActiveRecord::Migration
+  def change
+    add_column :payments, :user_id, :integer
+  end
+add_index :payments, [:user_id, :created_at]
+  end
+end
